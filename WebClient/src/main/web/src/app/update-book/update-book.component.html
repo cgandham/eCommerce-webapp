@@ -1,0 +1,148 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Simple Ecommerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+           <!-- <a class="nav-link" href="update-user.component.html">UPDATE USER</a> -->
+           
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item m-auto">
+                    <a class="nav-link" (click)="routeToHome()" >Home</a> 
+                </li>
+                <li class="nav-item m-auto">
+                    <a class="nav-link" (click)="routeToUpdateUser()" >Update User</a> 
+                </li>
+                <li class="nav-item">
+                    <a (click)="routeToShop()"  class="nav-link">Shop</a> 
+                </li>
+                <li class="nav-item">
+                    <a (click)="routeToSell()"  class="nav-link">Sell</a> 
+                </li>
+            </ul> 
+
+            <form class="form-inline my-2 my-lg-0">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary btn-number">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <a class="btn btn-success btn-sm ml-3"  (click)="routeToCart()">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span class="badge badge-light">{{ userCartItems }}</span>
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">EASY SELLING</h1>
+     </div>
+</section>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div >
+                <form  class="form-horizontal">
+                     <fieldset>
+                       <div id="legend">
+                         <legend class="">Now you can sell with best deals...</legend>
+                       </div>
+                       <div class="control-group">
+                         <div class="control-group">
+                           <!-- ISBN -->
+                           <label class="control-label" for="fname">ISBN</label>
+                           <div class="controls">
+                             <input type="text" id="sISBN" [(ngModel)]="ubISBN"  name="sISBN" placeholder="{{ubISBN}}" class="input-xlarge">
+                             <p class="help-block">Please provide book's ISBN</p>
+                           </div>
+                         </div>
+                         <div class="control-group">
+                   
+                          <!-- TITLE -->
+                          <label class="control-label" for="stitle">TITLE</label>
+                          <div class="controls">
+                            <input type="text" id="stitle" [(ngModel)]="ubtitle" name="stitle" placeholder="" class="input-xlarge">
+                            <p class="help-block">Enter Title</p>
+                          </div>
+                        </div>
+                   
+                         <!--AUTHORS  -->
+                         <label class="control-label"  for="sauthors">AUTHORS</label>
+                         <div class="controls">
+                           <input type="text" name="sauthors" [(ngModel)]="ubauthors" id="sauthors"  placeholder="" class="input-xlarge">
+                           <p class="help-block">Enter Authors</p>
+                         </div>
+                       </div>
+                
+                       <div class="control-group">
+                        <!-- PRICE -->
+                        <label class="control-label"  for="Price">Quantity</label>
+                        <div class="controls">
+                          <input [(ngModel)]="ubquantity" name="squantity" type="text" id="squantity"  placeholder="" class="input-xlarge">
+                          <p class="help-block">Enter Price to sell</p>
+                        </div>
+                      </div>
+                    
+                       
+                    
+                       <div class="control-group">
+                         <!-- PUBLICATIONS-->
+                         <label class="control-label" for="publication">PUBLICATIONS</label>
+                         <div class="controls">
+                           <input [(ngModel)]="ubpublication" name="spublication"  type="text" id="publication" name="publication" placeholder="" class="input-xlarge">
+                           <p class="help-block">Enter your book's publication</p>
+                         </div>
+                       </div>
+                    
+                       <div class="control-group">
+                         <!-- PRICE -->
+                         <label class="control-label"  for="Price">PRICE</label>
+                         <div class="controls">
+                           <input [(ngModel)]="ubprice" name="ubprice" type="text" id="Price"  placeholder="" class="input-xlarge">
+                           <p class="help-block">Enter Price to sell</p>
+                         </div>
+                       </div>
+
+                       <div class="control-group">
+                        <!-- IMAGE -->
+                        <label  *ngIf = "showUpdateButton" class="control-label"  for="Price">Upload Image</label>
+                        <div class="controls">
+                          <input  *ngIf = "showUpdateButton" type="file" name="file" (change)="onFileSelected($event)" multiple="multiple"/>
+                          <img id="myImg" *ngFor="let img of imageURL" [src]="img" height=200 width=300>
+                          <button (click)="deleteImage(i)" *ngFor="let img of imageURL; index as i" class="text-right" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete Image</button>
+                          <p class="help-block"></p>
+                        </div> 
+                      </div>
+                    
+                       <div class="control-group">
+                         <!-- Button -->
+                         <div class="controls">
+                           <button *ngIf = "showUpdateButton" (click)="updateBook()"  class="btn btn-success">UPDATE BOOK</button>
+                         </div>
+                       </div>
+                     </fieldset>
+                   </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+
+
+
+<router-outlet></router-outlet>

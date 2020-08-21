@@ -1,0 +1,144 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Simple Ecommerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+           <!-- <a class="nav-link" href="update-user.component.html">UPDATE USER</a> -->
+           
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item m-auto">
+                    <a class="nav-link,active" (click)="routeToUpdateUser()" >Update User</a> 
+                </li>
+                <li class="nav-item">
+                    <a (click)="routeToShop()"  class="nav-link">Shop</a> 
+                </li>
+                <li class="nav-item">
+                    <a (click)="routeToSell()"  class="nav-link">Sell</a> 
+                </li>
+            </ul> 
+
+            <form class="form-inline my-2 my-lg-0">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary btn-number">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <a class="btn btn-success btn-sm ml-3"  (click)="routeToCart()">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span class="badge badge-light">3</span>
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">E-COMMERCE CART</h1>
+     </div>
+</section>
+
+
+<div class="container mb-4">
+  <div class="row">
+      <div class="col-12">
+          <div class="table-responsive">
+             
+<form  class="form-horizontal">
+  <!-- <a href="#/register">LOGOUT</a> -->
+   <fieldset>
+     <div id="legend">
+       <legend class="">UPDATE USER DETAILS</legend>
+     </div>
+     <div class="control-group">
+ 
+       <div class="control-group">
+         <!-- Email -->
+         <label class="control-label" for="fname">Email</label>
+         <div class="controls">
+           <input type="text" id="uemail" [(ngModel)]="uemail" name="uemail" placeholder={{uemail}} class="input-xlarge">
+           <p class="help-block">Update Email</p>
+         </div>
+       </div>
+ 
+       <div class="control-group">
+         <!-- First Name -->
+         <label class="control-label" for="fname">First Name</label>
+         <div class="controls">
+           <input type="text" id="ufname" [(ngModel)]="ufname"  name="ufname" placeholder="" class="input-xlarge">
+           <p class="help-block">Update First Name</p>
+         </div>
+       </div>
+ 
+       <div class="control-group">
+ 
+        <!-- Last Name -->
+        <label class="control-label" for="lname">Last Name</label>
+        <div class="controls">
+          <input type="text" id="ulname" [(ngModel)]="ulname" name="ulname" placeholder="" class="input-xlarge">
+          <p class="help-block">Update Last Name</p>
+        </div>
+      </div>
+ 
+       
+      </div>
+  
+     
+  
+     <div class="control-group">
+       <!-- Password-->
+       <label class="control-label" for="password">Password</label>
+       <div class="controls">
+         <input [(ngModel)]="uconfirmpwd" type="password" id="password" name="password" placeholder="" class="input-xlarge">
+         <p class="help-block">Password should be at least 4 characters with a uppercase and a special charector.</p>
+       </div>
+     </div>
+  
+     <div class="control-group">
+       <!-- Password -->
+       <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+       <div class="controls">
+         <input [(ngModel)]="upwd" name="upwd" type="password" id="password_confirm"  placeholder="" class="input-xlarge">
+         <p class="help-block">Please confirm password</p>
+       </div>
+     </div>
+  
+     <div class="control-group">
+       <!-- Button -->
+       <div class="controls">
+         <button (click)="updateUser()"  class="btn btn-success">UPDATE</button>
+       </div>
+     </div>
+   </fieldset>
+ </form>
+          </div>
+      </div>
+      <div class="col mb-2">
+          <div class="row">
+              <div class="col-sm-12  col-md-6">
+                  <button (click)="routeToShop()" class="btn btn-block btn-light">Continue Shopping</button>
+              </div>
+              <div class="col-sm-12 col-md-6 text-right">
+                  <button (click)="routeToCart()"class="btn btn-lg btn-block btn-success text-uppercase">Go To Cart</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

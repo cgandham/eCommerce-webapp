@@ -1,0 +1,62 @@
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:9-jdk
+    steps:
+      - checkout
+      - run:
+          name: Install Packages
+          command: |
+            sudo apt-get update && sudo apt-get -y install wget zip unzip python3
+            python3 --version
+      - run:
+          name: Install pip
+          command: sudo apt install python3-pip
+      - run:
+          name: Install AWS CLI
+          command: |
+            pip3 --version
+            sudo pip3 install awscli
+            aws --version
+      - run:
+          name: Maven build
+          command: mvn clean install
+      - run:
+          name: Maven test
+          command: mvn test
+      - run:
+          name: Zip Artifact
+          command: |
+            echo "Current build number : ${CIRCLE_BUILD_NUM}"
+            echo "Creating directory to deploy"
+            mkdir -p artifact
+            cd artifact
+            cp ../*.yml .
+            cp ../*.json .
+            echo "Copying codedeploy-after intstall script to the directory"
+            cp ../codedeploy/*.sh .
+            cp ../WebServer/target/WebServer-1.0-SNAPSHOT.jar .
+            echo "Zipping files in directory"
+            zip -r codedeploy-${CIRCLE_BUILD_NUM}.zip .
+            echo "listing files in current directory"
+            ls -al
+            echo "Shifting directory and listing files"
+            cd ..
+            ls -al
+      - run:
+          name: Upload Artifacts to S3
+          command: |
+            echo "Uploading artifacts to s3 bucket ${BUCKET_NAME}"
+            cd artifact
+            aws s3 cp codedeploy-${CIRCLE_BUILD_NUM}.zip s3://${BUCKET_NAME}
+      - run:
+          name: Make CodeDeploy API call
+          command: |
+            echo "Calling CodeDeploy"
+            aws deploy create-deployment --application-name csye6225-webapp \
+                        --deployment-config-name CodeDeployDefault.AllAtOnce \
+                        --deployment-group-name csye6225-webapp-deployment \
+                        --description "CSYE6255 - CodeDeploy" \
+                        --s3-location bucket=${BUCKET_NAME},key=codedeploy-${CIRCLE_BUILD_NUM}.zip,bundleType=zip \
+                        --region us-east-1 \
+                        --output json

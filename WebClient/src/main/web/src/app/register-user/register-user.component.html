@@ -1,0 +1,100 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Simple Ecommerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+           <!-- <a class="nav-link" href="update-user.component.html">UPDATE USER</a> -->
+           
+          
+
+            
+        </div>
+    </div>
+</nav>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">HAPPY SHOPPING!</h1>
+     </div>
+</section>
+<div class="container mb-4">
+  <div class="row">
+      <div class="col-12">
+          <div >
+            <form  class="form-horizontal">
+              <a href="#/Login">Login</a>
+               <fieldset>
+                 <div id="legend">
+                   <legend class="">Register</legend>
+                 </div>
+                 <div class="control-group">
+                   <div class="control-group">
+                     <!-- First Name -->
+                     <label class="control-label" for="fname">First Name</label>
+                     <div class="controls">
+                       <input type="text" id="fname" [(ngModel)]="fname"  name="fname" placeholder="" class="input-xlarge">
+                       <p class="help-block">Please provide your First Name</p>
+                     </div>
+                   </div>
+                   <div class="control-group">
+             
+                    <!-- Last Name -->
+                    <label class="control-label" for="lname">Last Name</label>
+                    <div class="controls">
+                      <input type="text" id="lname" [(ngModel)]="lname" name="lname" placeholder="" class="input-xlarge">
+                      <p class="help-block">Please provide your Last Name</p>
+                    </div>
+                  </div>
+             
+                   <!-- E-mail  -->
+                   <label class="control-label"  for="username">Email</label>
+                   <div class="controls">
+                     <input type="text" name="remail" [(ngModel)]="remail" id="username"  placeholder="" class="input-xlarge">
+                     <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                   </div>
+                 </div>
+              
+                 
+              
+                 <div class="control-group">
+                   <!-- Password-->
+                   <label class="control-label" for="password">Password</label>
+                   <div class="controls">
+                     <input [(ngModel)]="rconfirmpwd" name="rconfirmpwd"  type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                     <p class="help-block">Password should be at least 8 characters with a uppercase and a special charector.</p>
+                   </div>
+                 </div>
+              
+                 <div class="control-group">
+                   <!-- Password -->
+                   <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                   <div class="controls">
+                     <input [(ngModel)]="rpwd" name="rpwd" type="password" id="password_confirm"  placeholder="" class="input-xlarge">
+                     <p class="help-block">Please confirm password</p>
+                   </div>
+                 </div>
+              
+                 <div class="control-group">
+                   <!-- Button -->
+                   <div class="controls">
+                     <button (click)="registerUser()"  class="btn btn-success">REGISTER</button>
+                   </div>
+                 </div>
+               </fieldset>
+             </form>
+          </div>
+      </div>
+      
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
