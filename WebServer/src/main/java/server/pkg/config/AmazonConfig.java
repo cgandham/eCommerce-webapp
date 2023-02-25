@@ -61,8 +61,8 @@ public class AmazonConfig {
         //Constants.setAWS_AccessKey(accesskey);//accesskey;
         //Constants.setAWS_SecretKey(secretkey);//secretkey;
         //Constants.setAWS_BucketName(s3bucketname);//;
-        //Constants.setAWS_AccessKey("AKIAIOG2BPXRCPK5RPMQ");//dev;
-        //Constants.setAWS_SecretKey("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");//dev;
+        //Constants.setAWS_AccessKey("grgrrgr");//dev;
+        //Constants.setAWS_SecretKey("p8e7ly+rgrg+bDJFBZ9e0/");//dev;
         Constants.setAWS_AccessKey("AKIAIR33AVDXDQS5OGTA");//PROD;
         Constants.setAWS_SecretKey("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");//PROD;
         Constants.setAWS_BucketName("webapp.chandana.gandham");//;
