@@ -2,8 +2,8 @@ package server.pkg.utils;
 
 public class Constants {
     public static final String AWS_RDS_EndPointUrl = "https://s3.us-east-1.amazonaws.com";
-    public static String AWS_AccessKey;//= System.getenv("ACCESS_KEY") == null?"AKIAIOG2BPXRCPK5RPMQ":System.getenv("ACCESS_KEY");
-    public static String AWS_SecretKey;// = System.getenv("SECRET_KEY") == null?"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":System.getenv("SECRET_KEY");
+    public static String AWS_AccessKey;//= System.getenv("ACCESS_KEY") == null?"uhjk":System.getenv("ACCESS_KEY");
+    public static String AWS_SecretKey;// = System.getenv("SECRET_KEY") == null?"p8e7ly+hjhgj+bDJFBZ9e0/":System.getenv("SECRET_KEY");
     public static String AWS_BucketName;// = System.getenv("s3_bucketname")== null?"webapp.chandana.gandham":System.getenv("s3_bucketname");//
 
     public static String topicARN;
